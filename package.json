@@ -1,0 +1,29 @@
+{
+  "name": "fooddeliveryapps",
+  "version": "1.0.0",
+  "description": "food delivery app",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html --no-hmr"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Manpreets59/food-delivery-apps.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Manpreets59/food-delivery-apps/issues"
+  },
+  "homepage": "https://github.com/Manpreets59/food-delivery-apps#readme",
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.27.4",
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-react": "^7.27.1",
+    "parcel": "^2.15.4"
+  }
+}
