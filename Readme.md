@@ -143,6 +143,47 @@ In jsx {} using this we can run any piece of js inside it
 how to render react element {variableName}
 
 
-
-
 # Assignment
+babel
+
+## Episode 4 Talk is cheap, show me the code
+# lecture
+Plan how our app look like clreate basic layout of it on excalidraw or figma 
+build this 
+header   
+  logo 
+  nav-items
+body
+  search
+  restaurantcontainer
+    restaurentCard
+     img
+     name of restaurent, star rating, cuisines, etc
+footer
+  copyright
+  links
+  address
+  contact
+
+we can write inline style and  style by creating style compnent  using {} bracket directly in our app 
+style= {stylecomponent}
+style= {{background-color = green}} 
+
+props: properties is short form for properties. To pass data dynamically to component we can pass it as prop in simple word props are normal argument to function as react component are normal function 
+we can use props using 
+{props.name} 
+to get data passed via react component
+and we can also destructure it at function argument and this is also know as destructure on the fly 
+{resname, cuisine}   and smae as 
+const {resname, cuisine} = props
+
+
+Exploring Api of swiggy
+config driver ui : website ui is driven by ui based on the ui website renders and changes according to ui   
+
+map, filter, reduce
+when doing map or looking upto anything then we have to give a key over there as there in restaurentCard . 
+why: when we add new restaurent card react does not know where to put this card then react re-render the entire dom (all cards). If we give then id then it render one restaurent in dom. keys are very important don't forget it . and according to react don't use index becoz if order change it create problem
+not using keys(not acceptable) <<<<<< index as key <<<<<< unique id(best practice)
+
+{post index as key is anti-pattern robinpokorny.com}
