@@ -15,7 +15,12 @@
  Using JS to manipulate the DOM
  Using React
  use CDN Links
- Create an Element
+ Create an Element , create root , render root
+
+ const heading = React.createElement("h1", {id: "heading"}, "Namaste React");
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(heading);
+
  Create nested React Elements
  Use root.render
  Learn about Arrow Functions before the next class
@@ -93,5 +98,51 @@ dist: production build file are in dist forder after minification , tree shaking
 browsersList : contain list of browser on which our web app definately works
 
 
-assignments
+# assignments
 consistent hashing
+
+## Episode - 3 Laying the foundation 
+# Dependence
+
+
+# lecture
+Script for sarting our projects in package.json
+
+React Element: it is an object and when we render it onto the dom it became html element and also we have property createRoot and render to create and render root.
+
+jsx : jsx and react are seprate but it make easy to write react code jsx is not html in js but it is html like syntax and xml like syntax. as jsx and javascript are different then how browser understand parcel (jsx code is transpiled before it reaches js engine) 
+jsx sanitize our data before running it prevent cross side scripting attack 
+
+babel is transpiling our code it take our code and transpile it that jsengine can understand used by react
+
+react.create element -> reactElement -> js object -> html(render)
+
+attributes = camelcase
+if our jsx code is in single line then it is perfect but if it take more than one line than we have to wrap it inside () bracket 
+
+extensions : preetier, bracket pari colouriser, Eslint, better comments 
+
+React component: everything in react is component 
+two tyes of component are functional components and class based components
+React functional components is normal javascript function that return a piece of jsx while createing react components name it with capital letter. we can also say it as a javascript function which return react element
+how to render react components
+<componentName/>
+{componentName()}
+<componentName></componentName>
+
+
+both are same 
+const fn = () => {
+  return true;
+}
+const fn = () => true;
+
+component composition : componenet inside another component
+
+In jsx {} using this we can run any piece of js inside it 
+how to render react element {variableName}
+
+
+
+
+# Assignment

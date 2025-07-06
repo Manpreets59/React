@@ -1,15 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const heading = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "I am h1 tag"),
-    React.createElement("h2", {}, "I am an h2 tag"),
-  ]),
-  React.createElement("div", { id: "child2" }, [
-    React.createElement("h1", {}, "I am h1 tag of  child 2"),
-    React.createElement("h2", {}, "I am an h2 tag of child 2 "),
-  ]),
-]);
+const heading = React.createElement("h1", { id: "heading" }, "Namaste React");
+
+const HeadingComponents = () => {
+  return (
+    <>
+      <h1>Hello</h1>
+      {heading}
+      {number}
+    </>
+  );
+};
+
+const number = <>1000 {heading}</>;
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(heading);
+root.render(<HeadingComponents />);
