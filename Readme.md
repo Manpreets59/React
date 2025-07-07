@@ -187,3 +187,62 @@ why: when we add new restaurent card react does not know where to put this card 
 not using keys(not acceptable) <<<<<< index as key <<<<<< unique id(best practice)
 
 {post index as key is anti-pattern robinpokorny.com}
+
+
+## Episode 5 Let's get hooked
+# lecture
+
+Two types of exports and imports
+
+In one file i can only write one default export  
+default export and named exports
+default export :
+  export default file_Name 
+  
+  import file_Name from "./path"
+
+Named exports : just write export in front of variable and function 
+and named export is used to export multiple things from a file 
+ export const rescard = ()=>  {
+  function 
+ } 
+ 
+ import {rescard} from "./path"
+
+# Hooks : 
+ like normal javascript function given by react prebuild , utility function given by react 
+
+ UseState
+  useState Hook: use to generate state variable to maintain state of component . superpowerfull variable help to keep data layer insync with ui layer
+  import from react like named import 
+  const[listOfRestaurent, SetListOfRestaurent] = useState (resList);
+  we can deStructure it on the fly
+     const arr = useState(resList)
+     const [listOfRestaurent, setListOfRestaurent] =  arr;
+     const [listOfRestaurent] = arr[0]
+     const [setlistOfRestaurent] = arr[1]
+
+
+  and whenever a state-variable update react re-render the componenets
+
+
+  # Reconciliation Algorithm: 
+  also know as react fiber (new algorithm came in react 16 and after that this algorithm is know as react fiber and this react fiber is new way of finding the diff and updating the dom )  
+
+  react create a virtual dom which is representation of actual dom 
+  virtual dom : object representaion of actual dom like a react.create element which return an object 
+
+  diff algorithm : find out difference between two virtual dom updated virtual dom and previous virtual dom for every render cycle 
+
+  why React fast ? 
+  because it do ifficient dom manipulation .
+  how? 
+  because it has virtual dom and diff algorithm
+
+
+read more about react architecture
+ https://github.com/acdlite/react-fiber-architecture
+  
+
+# assignment
+can be use named export with default export 
