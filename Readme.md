@@ -190,6 +190,7 @@ not using keys(not acceptable) <<<<<< index as key <<<<<< unique id(best practic
 
 
 ## Episode 5 Let's get hooked
+
 # lecture
 
 Two types of exports and imports
@@ -246,3 +247,49 @@ read more about react architecture
 
 # assignment
 can be use named export with default export 
+
+
+## Episode 6 Exploring the world
+
+# lecture
+ Monolithic architecture: software development refers to an application where all components are tightly coupled and packaged as a single, indivisible unit.
+
+ Microservice architecture: a design approach where an application is structured as a collection of small, independent, and loosely coupled services.
+ and this approach of having different service for each and small thing is know as sepration of concerns and single responsibility principal 
+ benifit of microservice is having different tech stack for each service 
+ how these services are connected ?
+ all services run on their specific port and then port map to domain name
+ 
+ React is popular because its render cycle are very fast. React has the one of best render mechanism 
+
+# hook
+  useEffect
+  useEffect(() => {
+    console.log("useEffect called")
+  }, [])
+  take two argument function and an dependancy array 
+  this useEffect callback will we called when componenet renders
+
+  useState
+  Login- Logout button to understand about usestate properly
+  we use useState because javascript variable doesn't automatically renders and because of that new changes doesn't display on dom so we use useState to create state variable 
+  how we modify constant variable of usestate?
+  when we update the value react call the component with updated values
+
+
+how react application make backend call and fetch data 
+
+cors policy : browser block api call from one origin to other . If ther is origin misMatch the browser blcok that api call and this is cors policy 
+cors chrome extension to bypass cors policy
+
+Api restaurent path
+
+json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+
+
+
+Shimmer ui : a version of the UI that doesn't contain actual content, but instead mimics the layout and shapes of the content that will eventually appear. 
+
+rendering component based on condition is know as conditionl rendering
+ternary operator to render shimmer if length == 0 other return data of api (cofig driven ui)
+
