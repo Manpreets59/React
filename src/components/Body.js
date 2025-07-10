@@ -1,6 +1,7 @@
 import { RestaurentCard } from "./RestaurentCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 export const Body = () => {
   const [listOfRestaurants, setlistOfRestaurants] = useState([]);
@@ -20,9 +21,13 @@ export const Body = () => {
     const json = await data.json();
     console.log(json);
     setlistOfRestaurants(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []
+      json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants || []
     );
-    setfilteredRestaurent(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [])
+    setfilteredRestaurent(
+      json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants || []
+    );
   };
 
   return listOfRestaurants.length === 0 ? (
@@ -43,7 +48,9 @@ export const Body = () => {
             onClick={() => {
               console.log(searchText);
               const filteredRestaurent = listOfRestaurants.filter((res) => {
-                return res?.info?.name?.toLowerCase()?.includes(searchText.toLowerCase());
+                return res?.info?.name
+                  ?.toLowerCase()
+                  ?.includes(searchText.toLowerCase());
               });
               setfilteredRestaurent(filteredRestaurent);
             }}
@@ -66,10 +73,15 @@ export const Body = () => {
       </div>
       <div className="res-container">
         {filteredRestaurent.map((restaurent) => (
-          <RestaurentCard
+          <Link
             key={restaurent?.info.id}
-            resData={restaurent?.info}
-          />
+            to={"/restaurant/" + restaurent?.info.id}
+          >
+            <RestaurentCard
+              key={restaurent?.info.id}
+              resData={restaurent?.info}
+            />
+          </Link>
         ))}
       </div>
     </div>

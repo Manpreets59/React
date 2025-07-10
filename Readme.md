@@ -312,74 +312,91 @@ we have corsproxy.io
 just append the url in front of api
 
 ## Episode 7 Finding the path
-# lecture 
-UseEffect: 
+
+# lecture
+
+UseEffect:
 If no dependency array useEffect is called after every render of the component.
 if there is an empty dependancy array useeffect is called on initial render and just once called
 if dependancy array is [btnName] then it is called everytime btnName changes
 
 UseState:
- never create useState outside of functional component and it is used to create local state variable inside your functional component
+never create useState outside of functional component and it is used to create local state variable inside your functional component
 alwys keep your use state variable on top as js in single threaded asynchronous language it run line by line
 never use/create usestate inside if else, for loop, function it can create inconsistency in your programm and they are ment to be createted inside functional component on higher level
 
 Routes :
-using library React router dom 
+using library React router dom
 npm install react-router-dom
 import creat browserRouter form react-router-dom
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const appRouter = createBrowserRouter([
-  {
-    path: "/",
-    element: <AppLayout />,
-    errorElement: <Error />,
-  },
-  {
-    path: "/about",
-    element: <About />,
-  },
-  {
-    path: "/contact",
-    element: <Contact />,
-  },
+{
+path: "/",
+element: <AppLayout />,
+errorElement: <Error />,
+},
+{
+path: "/about",
+element: <About />,
+},
+{
+path: "/contact",
+element: <Contact />,
+},
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<RouterProvider router={appRouter} />);
 
-React-router-dom give us access to hook 
+React-router-dom give us access to hook
 hook : useRouterError
-give more information about error 
+give more information about error
 import { useRouteError } from "react-router-dom";
 
 const Error = () => {
-  const err = useRouteError();
-  console.log(err);
-  return (
-    <div>
-      <h1>Oops!!</h1>
-      <h2>SomeThing went wrong </h2>
-      <h3>{err.status}: {err.statusText}</h3>
-    </div>
-  )
+const err = useRouteError();
+console.log(err);
+return (
+<div>
+<h1>Oops!!</h1>
+<h2>SomeThing went wrong </h2>
+<h3>{err.status}: {err.statusText}</h3>
+</div>
+)
 }
 export default Error;
 
 Children Routes
 Outlet : The Outlet component in React Router DOM serves as a placeholder within a parent route's component where matched child route components will be rendered. It is a fundamental part of creating nested routing structures and shared layouts in React applications.
 
-Never use anchor tag in react to route to other page 
+Never use anchor tag in react to route to other page
 <a href="/about">About Us </a>
-why? 
+why?
 because of it the whole page got referesh due to which page take time to load
 so insted of acheref we use link tage provided by react-router-dom
 because it does not reload the whole page it just change the component
+<Link to="/contact" >Contact Us</Link>
 
-Everything in react is component and as we change routes we navigate through different pages and our browser will not reload page. It is just sing page and React is  just interchanging the component and therefore react is know for single page application 
+Everything in react is component and as we change routes we navigate through different pages and our browser will not reload page. It is just sing page and React is just interchanging the component and therefore react is know for single page application
 
 Two type of routing in react app
- - Client side Routing - everything is loaded into our page so no need to make network call our this application is an example of client side routing
- - Server side Routing - when we have to make a newtwork request for different route 
+
+- Client side Routing - everything is loaded into our page so no need to make network call our this application is an example of client side routing
+- Server side Routing - when we have to make a newtwork request for different route
+
+useparams hook by react-router-dom to get resid
+
+{
+resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]
+?.card?.card?.carousel[4]?.dish?.title
+}
+
+.cards[2] chec this for recomended 
 
 
-useparams hook by react-router-dom to get resid 
+resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards
+card?.info?.
+
+
+resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[6]
