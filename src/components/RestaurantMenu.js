@@ -39,7 +39,7 @@ const RestaurantMenu = () => {
       <h2>{avgRating} Stars</h2>
       <h3>Menu Items</h3>
       <ul>
-        {(itemCards).map((item) => (
+        {itemCards.map((item) => (
           <li key={item?.card?.info?.id}>{item?.card?.info?.name}</li>
         ))}
       </ul>

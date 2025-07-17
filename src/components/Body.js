@@ -21,17 +21,17 @@ export const Body = () => {
     const json = await data.json();
     console.log(json);
     setlistOfRestaurants(
-      json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants || []
     );
     setfilteredRestaurent(
-      json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants || []
     );
   };
 
   return listOfRestaurants.length === 0 ? (
-    <Shimmer />
+    <Shimmer/>
   ) : (
     <div className="body">
       <div className="filter">

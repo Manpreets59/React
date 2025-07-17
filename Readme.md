@@ -400,3 +400,52 @@ card?.info?.
 
 
 resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[6]
+
+## Episode 8 Let's get Classy 
+# lecture
+ class based component: is normal javaScript class. It is a class which has render method that return some piece of jsx
+ Example of class based component
+ React.Component is a class present react package
+
+ Remember:
+   - make a javaScript class 
+   - extends React.Component from react
+   - render method that return some piece of jsx
+   - export our class and then use it same as normal react Component
+
+ class UserClass extends React.Component {
+  render() {
+    return (
+      <div className="user-card">
+        <h2>Name: Manpreet Singh</h2>
+        <h3>Location: Punjab</h3>
+        <h4>Contact: manpreets95828@gmail.com</h4>
+      </div>
+    );
+  }
+}
+
+Example of functional component 
+const User = () => {
+  return <div className="user-card">
+    <h2>Name: Manpreet Singh</h2>
+    <h3>Location: Punjab</h3>
+    <h4>Contact: manpreets95828@gmail.com</h4>
+  </div>
+}
+
+export default User
+
+Props inside class based component 
+ <UserClass name = {" Manpreet Singh " } /> this is how me pass
+
+how we recieve : we create a constructor 
+constructor(props){
+    super(props);
+    console.log(props);
+  }
+
+  <h2>Name: {this.props.name}</h2> and this is how we use it in our render Method 
+
+## Assignment
+what is super(props) in our class based component constructor and why we always use it 
