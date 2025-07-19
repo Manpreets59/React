@@ -405,11 +405,11 @@ resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[6]
 # lecture
  class based component: is normal javaScript class. It is a class which has render method that return some piece of jsx
  Example of class based component
- React.Component is a class present react package
+ React.Component is a class present in react package
 
  Remember:
    - make a javaScript class 
-   - extends React.Component from react
+   - extends React.Component from react and import react
    - render method that return some piece of jsx
    - export our class and then use it same as normal react Component
 
@@ -447,5 +447,78 @@ constructor(props){
 
   <h2>Name: {this.props.name}</h2> and this is how we use it in our render Method 
 
+  example code 
+  import React from "react";
+class UserClass extends React.Component {
+  constructor(props){
+    super(props);
+    console.log(props);
+  }
+  render() {
+    const  {name,location} = this.props;
+    return (
+      <div className="user-card">
+        {/* <h2>Name: {this.props.name}</h2> */}
+        <h2>Name: {name}</h2>
+        <h3>Location: {location}</h3>
+        <h4>Contact: manpreets95828@gmail.com</h4>
+      </div>
+    );
+  }
+}
+
+export default UserClass;
+
+How to create state variable inside class based component 
+functional component: 
+we use hook to create state variable inside function components
+
+class based component :
+state is created whenever a class instence is created .
+function is invoked, component render , load onto the webpage
+mount and unmounting 
+
+and that is the best place to create state , and recieve props 
+
+  constructor(props){
+    super(props);
+    console.log(props);
+
+    this.state = {
+      count: 0,
+    };
+  }
+
+
+<h1>count : {this.state.count}</h1>
+this is how we create and use state variable in class based component
+
+How to create two state variable 
+function component : we simply create another variable 
+const [count, setcount] = useState(0)
+const [count1, setcout1] = useState(0)
+and then we use these variable 
+
+Class based components: 
+our state is big object which contains all the state variable 
+example 
+  this.state = {
+      count: 0,
+      count2: 2,
+    };
+
+we can destructure them like this  const {count, count2} = this.state;
+and use them directly like  <h1>count : {count}</h1>
+                            <h1>count : {count2}</h1>
+
+How to update these state variable inside class based component
+In functional component we can directly use setVariable to update the variable 
+In class based component:
+never update state variable directly 
+We can use this.setState function provided by react to update the state variable in class based component 
+
+
+
+
 ## Assignment
-what is super(props) in our class based component constructor and why we always use it 
+what is super(props) in our class based component constructor and why we always use it ?
