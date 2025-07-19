@@ -5,25 +5,40 @@ class UserClass extends React.Component {
     console.log(props.name + "constructor called");
 
     this.state = {
-      count: 0,
+      userInfo: {
+        name: "dummy",
+        blong: "default",
+        avatar_url: "https://avtars.io/manpreets59",
+      },
     };
   }
-  componentDidMount(){
+  async componentDidMount(){
     console.log(this.props.name + "component did mount called")
+    const data = await fetch("https://api.github.com/users/Manpreets59")
+    const json = await data.json();
+    this.setState({
+      userInfo: json,
+    })
+    console.log(json);
   }
+
+  componentDidUpdate(){
+    console.log("Component did update called");
+  }
+
+  componentWillUnmount(){
+    console.log("component will unmount called");
+  }
+
   render() {
-    const  {name,location} = this.props;
-    const {count} = this.state;
+    const { name , blog, avatar_url} = this.state.userInfo
     console.log(name + "render called");
     return (
       <div className="user-card">
-        <h1>count : {count}</h1>
-        <button onClick={() => this.setState({
-          count: count + 1,
-        })}>count Inc</button>
+        <img src={avatar_url}/>
         <h2>Name: {name}</h2>
-        <h3>Location: {location}</h3>
-        <h4>Contact: manpreets95828@gmail.com</h4>
+        <h3>blog: india</h3>
+        <h4>Contact: {blog}</h4>
       </div>
     );
   }
