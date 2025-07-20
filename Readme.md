@@ -516,9 +516,232 @@ In functional component we can directly use setVariable to update the variable
 In class based component:
 never update state variable directly 
 We can use this.setState function provided by react to update the state variable in class based component 
+example 
+        <h1>count : {count}</h1>
+        <button onClick={() => this.setState({
+          count: count + 1,
+          count2: count2+1, // we can also update both together 
+        })}>count Inc</button>
 
+
+
+ Life cycle of react Class based components 
+ how these class based component mounted onto the webpage 
+   parent component is called 
+   class based based component encountered 
+     then constructor is called 
+          render is called 
+
+class Based component another important method 
+componentDidMount(){
+  
+}
+It is used to make api call inside it why?
+load component then make api call fill the data , update data onto the dom   
+
+ // class componet is called and loading 
+     render method is called 
+     when class based component is mounted on the dom 
+     then this componentDidMount is called 
+
+example : for class based component
+            parent constructor 
+            parent render 
+            child constructor 
+            child render
+            child component did mount 
+            parent component did mount 
+          
+how lifecycle method works when there are multiple children 
+parent constructor 
+parent render 
+
+batch the render phase 
+first child constructor 
+first child render
+second constructor 
+second render
+
+<Dom is updated in single Batch >
+patch the commit phase 
+first componentdidMount
+second componentDidMount
+
+parent componenetDidMount
+
+ReactLifeCycle Diagram 
+https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+React will batch the render phase if there are multiple children and then commit phase will  batch and happen this is done because of optimization purposes 
+as dom manipulation is most expensive operation in react 
+so react batch the render phase and the commit phase and then it does dom manipulation using reconciliation , diffalgorithm 
+
+How to Make api Call in class based components?
+async componentDidMount(){
+    console.log(this.props.name + "component did mount called")
+    const data = await fetch("https://api.github.com/users/Manpreets59")
+    const json = await data.json();
+    console.log(json);
+  }
+
+componentDidUpdate is a lifecycle method in React class components that is invoked immediately after a component's updates are flushed to the DOM. This method is not called for the initial render of the component. 
+
+mounting : showing on ui , 
+unmounting : removing from ui 
+
+Unmounting :
+componentWillUnmount method  : called when we change the page or we are leaving the page or the page will remove from the dom 
+
+useEffect and componenetDidMount are not same both are different thing 
+useEffect has dependancy array and when dependancy array changes it is called 
+but componentDidMount is called on initiall render and after that componentDidUpdate is called and when we change the page then componentDidUnMount is called
+
+CleanUp
+they are use to free up resources 
+example we have done 
+  this.timer = setInterval(() => {
+    console.log("Namaste React");
+  }, 1000);
+
+we need to cleanup it when we leave the page or the component is unmount otherwise everyTime we render that page again it start another setInterval , when we create a mess we need to clear that mess also  
+componentWillUnmount(){
+  clearInterval(this.timer);
+}
+
+functional component Lefecycle 
+useEffect(() => {
+  const timer = setInterval(() => {
+    console.log("Namaste React op")
+  }, 1000)
+  console.log("useEffect Called")
+
+  return () => {
+    clearInterval(timer);
+    console.log("useEffect Return")
+  }
+
+})
+
+console.log("render called")
+
+render called 
+useEffect called :  is called when a component is mount
+UseEffect Return called : it works when a component is unMount
 
 
 
 ## Assignment
-what is super(props) in our class based component constructor and why we always use it ?
+what is constructor (props) super(props) in our class based component constructor and why we always use it ?
+async ComponentDidMount() and why can't we us async with useEffect callback function 
+
+
+
+## Episode - 9 Optimizing our App
+# Lecture
+Single resposibility Principal :
+creating a different component and assigning them a single responsibility example contact us . This is the good way of maintaining the code in modular fashion , modularity mean break down code into small- small module so that your code become more maintainable and testable 
+example: if there is an issue with my restaurent card then i would determine it easily by testing that specific component  
+
+ Hook : hook are like normal javascript function with special functionality given by react 
+    - useState Hook 
+    - useEffect Hook 
+    - useParams
+Hook is just a utility function we create custom hook to take responsibility of a component a give to a hook so that our code became more modular 
+
+Custom Hook : Custom Hooks in React are JavaScript functions designed to extract and reuse logic from React components. They allow developers to encapsulate common functionalities that involve built-in React Hooks (like useState, useEffect, useContext, etc.) and share them across different components in a modular and organized way.
+
+example :
+import { useState, useEffect } from "react";
+import { MENU_API } from "./constants";
+
+const useRestaurantMenu = (resId) => {
+  const [resInfo, setResInfo] = useState(null);
+  // Fetch data
+  useEffect(() => {
+    fetchData();
+  }, [resId]);
+
+  const fetchData = async () => {
+    try {
+      const data = await fetch(MENU_API + resId);
+      const json = await data.json();
+      setResInfo(json?.data || []);
+    } catch (error) {
+      console.error("Error fetching restaurant menu:", error);
+    }
+  };
+  return resInfo;
+};
+
+export default useRestaurantMenu;
+
+this hook fetch a data and we use it to present menu of restaurants 
+
+custom hook to check your internet status 
+example : 
+import { useEffect, useState } from "react";
+
+const useOnlineStatus = () => {
+  const [OnlineStatus, setOnlineStatus] = useState(true);
+
+  // check if online or offline
+  useEffect(() => {
+    window.addEventListener("offline", () => {
+      setOnlineStatus(false);
+    });
+
+    window.addEventListener("online", () => {
+      setOnlineStatus(true);
+    });
+  });
+
+  // boolena value
+  return OnlineStatus;
+};
+export default useOnlineStatus;
+ 
+How to simulate your browser that you are offline ?
+go to network tab and on top for internet status  wifi logo change it according to requirement No throttling, offline , fast 4g etc.
+
+why we use use in hooks name ?
+helps developers easily identify custom hooks and understand their purpose, promoting code clarity and maintainability. we can also write custom hook without writing use in their name but while linting it throw some error and react docs also suggest to use use in hook name 
+
+How to make application more performant 
+Instead of loading the entire application's code at once we load smaller bundle of these file based on the requirement different name for this process are : 
+    - chunking
+    - code splitting 
+    - dynamic bundling 
+    - lazy loading 
+    - on demand loading 
+    - dynamic import  etc are the variour name for same thing 
+this bundle are like small application inside big one 
+
+Example:
+create another route on header grocery 
+the js bundle of this page load when i enter in this page 
+for this we use lazy  function
+in main file App.js
+import lazy as name import from react and then 
+const Grocery = lazy(() => import("./components/Grocery"))
+and in the main file remove this 
+import Grocery from "./components/Grocery";
+
+Now you get an erro componet suspend to synchronous operation 
+now import suspense component as name import form react
+import React, {lazy, Suspense} from "react";
+
+why suspense?
+This is because it take some time before loading the component so we use suspense to wrap component
+and give a placeholder Or fallback which what should react render when code is not available and fallback is passed in jsx form 
+
+and wrap route like this 
+      {
+        path: "/grocery",
+        element: <Suspensefallback={<h1>Loading....</h1>}>
+        <Grocery />
+        </Suspense>,
+      },
+
+
+
+# Assignment
