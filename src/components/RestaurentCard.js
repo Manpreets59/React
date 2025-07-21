@@ -5,19 +5,23 @@ export const RestaurentCard = (props) => {
   const { cloudinaryImageId, name, avgRating, cuisines, costForTwo, sla } =
     resData;
   return (
-    <div className="res-card">
-      <div className="img">
-        <img
-          className="res-logo"
-          alt="res-logo"
-          src={CDN_URL + cloudinaryImageId}
-        />
+    <div className="w-72 p-4 m-4 rounded-2xl shadow-lg hover:scale-105 transition-transform bg-white">
+      <img
+        className="w-full h-44 object-cover rounded-lg"
+        alt="Restaurant"
+        src={CDN_URL + cloudinaryImageId}
+      />
+      <div className="mt-3">
+        <h3 className="text-xl font-semibold truncate">{name}</h3>
+        <p className="text-gray-600 text-sm line-clamp-2">
+          {cuisines.join(", ")}
+        </p>
+        <div className="flex items-center justify-between mt-2 text-sm text-gray-700">
+          <span>⭐ {avgRating}</span>
+          <span>{costForTwo}</span>
+          <span>{sla?.deliveryTime} min</span>
+        </div>
       </div>
-      <h3>{name}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>{avgRating} Stars</h4>
-      <h4>{costForTwo}</h4>
-      <h4>{sla?.deliveryTime} mins</h4>
     </div>
   );
 };

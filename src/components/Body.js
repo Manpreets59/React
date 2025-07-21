@@ -31,22 +31,24 @@ export const Body = () => {
     );
   };
 
-  // online status 
+  // online status
   const OnlineStatus = useOnlineStatus();
-  if(OnlineStatus === false){
-    return <h1>Looks like you are offline please check your internet connection</h1>
+  if (OnlineStatus === false) {
+    return (
+      <h1>Looks like you are offline please check your internet connection</h1>
+    );
   }
 
-
   return listOfRestaurants.length === 0 ? (
-    <Shimmer/>
+    <Shimmer />
   ) : (
-    <div className="body">
-      <div className="filter">
-        <div className="search">
+    <div className="body px-4 py-6">
+      <div className="filter flex flex-col md:flex-row md:items-center md:justify-center gap-4 mb-8 ">
+        <div className="search flex gap-2">
           <input
             type="text"
-            className="search-box"
+            placeholder="Search Restaurents"
+            className="border border-gray-400 rounded-md px-4 py-2 w-64 focus:outline-none focus:ring-2  focus:ring-blue-500 "
             value={searchText}
             onChange={(e) => {
               setsearchText(e.target.value);
@@ -54,7 +56,6 @@ export const Body = () => {
           />
           <button
             onClick={() => {
-              console.log(searchText);
               const filteredRestaurent = listOfRestaurants.filter((res) => {
                 return res?.info?.name
                   ?.toLowerCase()
@@ -62,35 +63,41 @@ export const Body = () => {
               });
               setfilteredRestaurent(filteredRestaurent);
             }}
+            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
           >
             search
           </button>
         </div>
         <button
-          className="filter-btn"
+          className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
           onClick={() => {
-            console.log("button clicked");
             const filteredList = listOfRestaurants.filter(
               (res) => res?.info.avgRating > 4
             );
-            setlistOfRestaurants(filteredList);
+            setfilteredRestaurent(filteredList);
           }}
         >
           Top Rated Restaurents
         </button>
       </div>
-      <div className="res-container">
-        {filteredRestaurent.map((restaurent) => (
-          <Link
-            key={restaurent?.info.id}
-            to={"/restaurant/" + restaurent?.info.id}
-          >
-            <RestaurentCard
+      <div className="res-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {filteredRestaurent.length === 0 ? (
+          <h2 className="text-center text-gray-500 col-span-full">
+            No restaurants found.
+          </h2>
+        ) : (
+          filteredRestaurent.map((restaurent) => (
+            <Link
               key={restaurent?.info.id}
-              resData={restaurent?.info}
-            />
-          </Link>
-        ))}
+              to={"/restaurant/" + restaurent?.info.id}
+            >
+              <RestaurentCard
+                key={restaurent?.info.id}
+                resData={restaurent?.info}
+              />
+            </Link>
+          ))
+        )}
       </div>
     </div>
   );

@@ -7,26 +7,26 @@ export const Header = () => {
   const [btnName, setbtnName] = useState("Login");
   const onlineStatus = useOnlineStatus();
   return (
-    <div className="header">
-      <div className="logo-container">
-        <img className="logo" src={LOGO_URL} />
+    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between px-4 py-3 shadow-md sticky top-0 bg-white z-50">
+      <div className="w-24 mb-2 sm:mb-0 ">
+        <img className="w-full object-contain" src={LOGO_URL} alt="App Logo" />
       </div>
-      <div className="nav-items">
-        <ul>
+      <div className="w-full sm:w-auto">
+        <ul className="flex flex-wrap justify-center sm:justify-end items-center gap-4 text-sm sm:text-base font-medium text-gray-700">
           <li>
             OnlineStatus: {onlineStatus ? "✅ " : "🔴"}
           </li>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/" className="hover:text-orange-500 transition">Home</Link>
           </li>
           <li>
-            <Link to="/about">About Us</Link>
+            <Link to="/about" className="hover:text-orange-500 transition">About Us</Link>
           </li>
-          <li><Link to="/contact" >Contact Us</Link></li>
-          <li><Link to="/grocery">Grocery</Link></li>
+          <li><Link to="/contact" className="hover:text-orange-500 transition">Contact Us</Link></li>
+          <li><Link to="/grocery" className="hover:text-orange-500 transition">Grocery</Link></li>
           <li> Cart </li>
           <button
-            className="login"
+            className="bg-orange-500 text-white px-3 py-1 rounded hover:bg-orange-600 transition"
             onClick={() => {
               btnName === "Login" ? setbtnName("Logout") : setbtnName("Login");
             }}

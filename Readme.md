@@ -742,6 +742,18 @@ and wrap route like this
         </Suspense>,
       },
 
-
-
 # Assignment
+
+## Episode - 10 Jo Dikhta hai, vo bikta hai 
+# lecture 
+Ui library
+sass and scss : css
+Style component 
+Material ui , chakra ui, bootstrap, ant design
+tailwind css
+post css
+
+Advantage of tailwind : don't need to change files to write css 
+It is very-lightweight because ship unused css
+
+disadvantages of tailwind: It load the code with classed and code became less readable and also there is initial learning curve for developers 
