@@ -1,4 +1,4 @@
-import { RestaurentCard } from "./RestaurentCard";
+import { RestaurentCard, withPromotedLabel } from "./RestaurentCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -9,6 +9,7 @@ export const Body = () => {
   const [filteredRestaurent, setfilteredRestaurent] = useState([]);
 
   const [searchText, setsearchText] = useState("");
+  const RestaurantCardPromoted = withPromotedLabel(RestaurentCard);
 
   useEffect(() => {
     fetchData();
@@ -91,10 +92,20 @@ export const Body = () => {
               key={restaurent?.info.id}
               to={"/restaurant/" + restaurent?.info.id}
             >
-              <RestaurentCard
-                key={restaurent?.info.id}
-                resData={restaurent?.info}
-              />
+              {
+                /* If the restaurent is promoted then add a promoted label to it  */
+                restaurent?.info?.promoted ? (
+                  <RestaurantCardPromoted
+                    key={restaurent?.info.id}
+                    resData={restaurent?.info}
+                  />
+                ) : (
+                  <RestaurentCard
+                    key={restaurent?.info.id}
+                    resData={restaurent?.info}
+                  />
+                )
+              }
             </Link>
           ))
         )}

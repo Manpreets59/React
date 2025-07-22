@@ -757,3 +757,45 @@ Advantage of tailwind : don't need to change files to write css
 It is very-lightweight because ship unused css
 
 disadvantages of tailwind: It load the code with classed and code became less readable and also there is initial learning curve for developers 
+
+## Episode - 11 Data is the new oil 
+# lecture 
+Higher order components :  A Higher-Order Component (HOC) in React is an advanced technique for reusing component logic. It is a function that takes a component as an argument and returns a new component with enhanced functionality or behavior. 
+
+Why we use, when we use , what component does it take and what component it return ?  
+
+example of higher order component: 
+// Higher order component to add a promoted labelif the restaurant is promoted 
+// intput- RestaurantCard => RestaurantCardPromoted 
+
+export const withPromotedLabel = (RestaurentCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label>Promoted</label>
+        <RestaurentCard {...props}/>
+      </div>
+    )
+  }
+}
+
+and this is how we use it 
+
+const RestaurantCardPromoted = withPromotedLabel(RestaurentCard);
+
+              {
+                /* If the restaurent is promoted then add a promoted label to it  */
+                restaurent?.info?.promoted ? (
+                  <RestaurantCardPromoted
+                    key={restaurent?.info.id}
+                    resData={restaurent?.info}
+                  />
+                ) : (
+                  <RestaurentCard
+                    key={restaurent?.info.id}
+                    resData={restaurent?.info}
+                  />
+                )
+              }
+
+Lifting the state up , controled and uncontroled component
