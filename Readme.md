@@ -798,4 +798,15 @@ const RestaurantCardPromoted = withPromotedLabel(RestaurentCard);
                 )
               }
 
-Lifting the state up , controled and uncontroled component
+Lifting the state up:
+"Lifting state up" in React is a technique for sharing state between multiple components by moving the state to their closest common ancestor. This pattern ensures a single source of truth for the shared data and promotes consistency across components that depend on that state.
+controled and uncontroled component:
+
+why we write like this when encounter an @ c.card?.card?.["@type"]
+
+Accordian for EachRestaurant Menu :
+Accordian has two thing accordian header and accordian data
+
+<ItemList items= {data.itemsCards} />
+items.map ((item) => itemCards)
+key = ( item.card.info.id)

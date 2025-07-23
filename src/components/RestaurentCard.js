@@ -32,7 +32,7 @@ export const RestaurentCard = (props) => {
 export const withPromotedLabel = (RestaurentCard) => {
   return (props) => {
     return (
-      <div className="relative ">
+      <div >
         <label className="absolute bg-black text-white m-2 p-2 rounded-lg ">Promoted</label>
         <RestaurentCard {...props}/>
       </div>
