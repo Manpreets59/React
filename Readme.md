@@ -810,3 +810,25 @@ Accordian has two thing accordian header and accordian data
 <ItemList items= {data.itemsCards} />
 items.map ((item) => itemCards)
 key = ( item.card.info.id)
+
+custom Accordian for menu items: added a feature that when one component of accordian is open then the rest got closed 
+
+React dev tool chrome extension 
+The React Developer Tools Chrome extension introduces two primary components within the Chrome DevTools interface when inspecting a React application:
+Components Tab:
+This tab displays a hierarchical tree representation of all the React components rendered on the page.
+Selecting a component in the tree allows for inspection of its current state, props, and hooks in a panel on the right.
+Values for state and props can be modified in real-time, which can be useful for debugging and testing different scenarios.
+It provides options to navigate to the source code of a component, log component data to the console, and inspect the underlying DOM element.
+A search bar is available to quickly locate specific components within the tree.
+Profiler Tab:
+This tab is used for analyzing the performance of a React application.
+It allows recording and visualizing the rendering process of components over time.
+Tools like the Flame Chart and Ranked Chart help identify performance bottlenecks and optimize rendering performance.
+It provides insights into how components interact and re-render, aiding in identifying and improving slow-rendering components. 
+
+controled and uncontroled index :
+initially accordian are controlling thenselves now i have take the power and give it to parent now at a time only one accoridan is expanded and rest are closed 
+
+ifcomponent is controlling itself then it is called uncontroled component
+and if parent is controlling a component then it is called  controlled component
