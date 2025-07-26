@@ -832,3 +832,76 @@ initially accordian are controlling thenselves now i have take the power and giv
 
 ifcomponent is controlling itself then it is called uncontroled component
 and if parent is controlling a component then it is called  controlled component
+and give power to parent to control component is also know as lifting the state up for more (https://react.dev/learn/sharing-state-between-components#lifting-state-up-by-example)
+
+props drilling: Prop drilling is an anti-pattern where the developer passes down a prop through multiple levels of components simply to access data defined higher up the tree in a deeply nested level.
+and sometimes there is no need of that data passed by some components but we have to pass data because our deeply nested level component require props and this cause our code look mess and less readable for this we have react-context 
+
+React Context :  is a feature in React that enables components to share data and state across the component tree without the need for "prop drilling." Prop drilling refers to the practice of passing props down manually through multiple levels of nested components, even if intermediate components don't directly use those props.
+
+Core Components:
+createContext: This function is used to create a Context object.
+Context.Provider: This component is used to wrap a part of your component tree and provides a value prop. All components within this provider's subtree can access the provided value.
+useContext Hook: This hook is used within a functional component to consume the value provided by the nearest Context.Provider for that specific Context.
+How it works:
+You create a Context using createContext. Then, you wrap the part of your component tree that needs access to this context with a Context.Provider, passing the data you want to share via the value prop. Finally, any descendant component needing this data can use the useContext hook to access it directly.
+When to use it:
+React Context is ideal for sharing data that is considered "global" or applicable to a large section of your application's UI, reducing the complexity and verbosity associated with prop drilling in deeply nested component structures. While suitable for many scenarios, for highly complex global state management or side effects, dedicated state management libraries like Redux or Zustand might be considered.
+
+Example how we create context = 
+import { createContext } from "react";
+const userContext = createContext({
+    loggedInUser: "Guest",
+})
+
+export default userContext;
+
+and this is how we use it 
+const {loggedInUser} = useContext(userContext);
+
+we have to way to access data through context
+hook like above example and second is mostly used in class based component 
+<userContext.Consumer>
+{(data) => console.log(data)}
+{(loggedInUser) => <h1>{loggedInUser}</h1>}
+</userContext.Consumer>
+
+we have contextProvider to update the data of in our app after fetching it from api 
+Example : wrap our entire app insdie context.provider and then give value that can be updated in our entire app and this is done in our root level file 
+ return (
+    <userContext.Provider value={{loggedInUser: userName}}>
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
+    </userContext.Provider>
+  );
+};
+
+    import userContext from "./utils/userContext";
+const AppLayout = () => {
+  const [userName, setUserName] = useState(0);
+  //authentication logic
+  useEffect(() => {
+    const data = {
+      name: "Manpreet Singh",
+    };
+    setUserName(data.name);
+  }, []);
+
+  and also i can use my provider for specific portion i can use context.provider for my header and my value are only access inside my header 
+  and i can create multiple context and i can override anywhere i want
+
+   return (
+    <userContext.Provider value={{loggedInUser: userName}}>
+    // here i hava userName value fetch through api 
+      <div className="app">
+      <userContext.Provider value={{loggedInUser: "elon Musk"}}>
+        <Header />
+        // only inside header provider i have elon musk 
+        </userContext.Provider>
+        <Outlet />
+      </div>
+    </userContext.Provider>
+  );
+};

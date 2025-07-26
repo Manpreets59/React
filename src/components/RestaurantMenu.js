@@ -9,7 +9,7 @@ const RestaurantMenu = () => {
 
   const resInfo = useRestaurantMenu(resId);
 
-  const [showIndex, setShowIndex] = useState(0);
+  const [showIndex, setShowIndex] = useState(null);
 
   if (resInfo === null) {
     return <Shimmer />;
@@ -19,6 +19,10 @@ const RestaurantMenu = () => {
     resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]?.card
       ?.card?.itemCards || [];
   console.log(resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+  
+   if (!resInfo?.cards){
+  return <div className="text-center text-gray-500">No data available</div>
+ }
 
   const categories =
     resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
@@ -43,7 +47,7 @@ const RestaurantMenu = () => {
           ⭐ {avgRating} / 5
         </p>
         {/* Categories Accordian  */}
-        {categories.map((category) => (
+        {categories.map((category, index) => (
           <RestaurantCategory
             data={category?.card?.card}
             key={category?.card?.card?.categoryId}
