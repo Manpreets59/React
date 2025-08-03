@@ -905,3 +905,19 @@ const AppLayout = () => {
     </userContext.Provider>
   );
 };
+
+
+## Episode-12 Let's build our store 
+# Lecture 
+Redux and React are distinct tools serving different purposes within web development, although they are frequently used together.
+React is a JavaScript library for building user interfaces. It focuses on the component-based approach, allowing developers to create reusable UI elements with their own local state. React's core strength lies in efficient rendering and managing the view layer of an application.
+Redux is a predictable state container for JavaScript applications. It is a standalone library that can be used with any UI layer or framework, including React. Redux provides a centralized store for the application's global state, making it accessible to any component without the need for prop drilling (passing data through multiple nested components).  
+offers two library React-Redux and Redux ToolKit 
+
+Redux is not only library for managing state other libraries are like zustand, recoil, 
+application became eassy to debug while using redux because we have redux dev tools  
+Installation :  install @reduxjs/toolkit and react-redux
+                Build our store
+                connect our store to our app
+                Slice(cartSlice), dispatch(action), selector(subscribe)
+
