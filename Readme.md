@@ -907,7 +907,7 @@ const AppLayout = () => {
 };
 
 
-## Episode-12 Let's build our store 
+## 
 # Lecture 
 Redux and React are distinct tools serving different purposes within web development, although they are frequently used together.
 React is a JavaScript library for building user interfaces. It focuses on the component-based approach, allowing developers to create reusable UI elements with their own local state. React's core strength lies in efficient rendering and managing the view layer of an application.
@@ -921,3 +921,71 @@ Installation :  install @reduxjs/toolkit and react-redux
                 connect our store to our app
                 Slice(cartSlice), dispatch(action), selector(subscribe)
 
+only subscribe to specific slice inside store because if we subscibe to whole store and then get specific slice and use it in code then if anything change in our entire store then the component got effected so only subscibe to specific portion of store of store(Slice).
+
+appStore.js has a one big reducer which contain multiple small reducers like cartReducers, but when we are writing slicies we have multiple reducers that we export like addItem, removeItem , clearCart 
+
+
+vanialla(older) redux => don't mutate the state 
+directly modifying state inside reduces is prohibited earlier we create newstate modify that and push it 
+example:
+ reducers: {
+    addItem: (state, action) => {
+      const newState = [...state];
+      newstate.items.push(action.payload);
+      return newState
+    },
+ }
+
+In redux-toolkit we have option to mutate the state or we have to mutate the state
+reduxToolkit reducer example :
+reducers: {
+    addItem: (state, action) => {      
+      state.items.push(action.payload);
+    },
+ }
+
+redux use immer library  The primary reason for this integration is to simplify the management of immutable state updates within Redux reducers.in modern redux   
+rtk query , redux thung , redux midleware, 
+
+// orinalState = ["pizza"]
+    clearCart: (state, action) => {
+      console.log(state) // [pizza]
+      console.log(current(state))
+      state = [];
+      console.log(state)
+      // state.items.length = 0;
+    },
+    we cant directly modify the state directly like state=[]
+    because it is local copy of our actual opject our object doesn't change so we have to do this 
+     state.items.length = 0; this will modify our state actualy to length 0
+
+    clearCart: (state, action) => {
+      return {items : []}; // this will also update state to length0
+    },
+
+    redux dev tools help in debugging
+
+## Episode - 13 Time for the test
+# lecture :
+Types of testing(Developer) : 
+- unit Testing : Testing one unit or one react component in isolation 
+- Integration Testing : Testin the integration of the component example: in search box searching for specific item 
+- End to End testing (e2e testing) : End-to-end (E2E) testing is a software testing methodology that validates an application's workflow from start to finish, simulating real user scenarios. The primary objective is to ensure that all integrated components and systems function correctly together and that data integrity is maintained throughout the entire process.
+tools for e2e testing selenium , cypress , etc
+
+As a developer we majorly concern about first two types of testing 
+
+Testing libraries : 
+React testing library : used to write testCases in our react app build on top of dom testing library, It uses jest so we need it installed and also jest using babel 
+
+what we have done till now : setting up testing
+- Install React testing library 
+- install jest 
+- babel dependencies required while using jest with babel 
+- configure babel.config.js 
+
+Now parcel will already used babel but now we have added babel.config.js now parcel configration will conflict with this babel configration so we have to change parcel behaviour to accomodate to use babel along with jest 
+
+# Assignment
+https://parceljs.org/languages/javascript/#babel Read this 
