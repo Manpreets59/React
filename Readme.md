@@ -982,10 +982,37 @@ React testing library : used to write testCases in our react app build on top of
 what we have done till now : setting up testing
 - Install React testing library 
 - install jest 
-- babel dependencies required while using jest with babel 
+- install babel dependencies required while using jest with babel 
 - configure babel.config.js 
+- configure parcel config file to disable default babel transpilation
+- jest configration npx create-jest
+- install jsdom library : npm install --save-dev jest-environment-jsdom
 
 Now parcel will already used babel but now we have added babel.config.js now parcel configration will conflict with this babel configration so we have to change parcel behaviour to accomodate to use babel along with jest 
 
 # Assignment
-https://parceljs.org/languages/javascript/#babel Read this 
+https://parceljs.org/languages/javascript/#babel Read this parcel by default has its own babel configration if you wish to use ur own custom configration (jest, eslint) then you can choose to disable babel transpilation in parcel and for this you have to make changes in babel.rc file to disable babel transpilation . 
+
+jest configration npx create-jest
+jsdom (browser-like) : It is library which parses and interacts with assembled HTML just like browser. The benifit is that it isn't a browser.but give feature of browser 
+
+Test Cases :
+Example 
+Created sum file 
+export const sum = (a b) => {
+  return a+b;
+};
+
+sum.test.js file inside  __test__
+import sum function in file 
+// how we write test cases test("string", callback function ) string is the description and callback function is the actual implementation 
+test("sum function should calculate the sum of two numbers", () => {
+  const result = sum(3,4);
+  expects(result).toBe(7); // this line is known as assertion 
+})
+
+create new folder __test__ for writing test cases anywhere in our folder structure and any javaScript file or typeScript file inside this will be considered as test file now create file name sum.test.js inside this  __test__ folder
+
+and also we can create any file with the name .test.js or .spec.ts
+Headers.test.js, Headers.test.ts, Headers.spec.js, Headers.test.js all those files following this pattern will be considered as test file 
+_ _ : these two times underscore is considered as dunder and also called dunder test two underscore on start and two at end .
