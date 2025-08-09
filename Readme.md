@@ -987,6 +987,9 @@ what we have done till now : setting up testing
 - configure parcel config file to disable default babel transpilation
 - jest configration npx create-jest
 - install jsdom library : npm install --save-dev jest-environment-jsdom
+-  install @babel/preset-react: to make jsx work in test cases
+- Include  @babel/preset-react inside my babel configration
+- Install @testing-library/jest-dom  : npm i -D @testing-library/jest-dom 
 
 Now parcel will already used babel but now we have added babel.config.js now parcel configration will conflict with this babel configration so we have to change parcel behaviour to accomodate to use babel along with jest 
 
@@ -1016,3 +1019,10 @@ create new folder __test__ for writing test cases anywhere in our folder structu
 and also we can create any file with the name .test.js or .spec.ts
 Headers.test.js, Headers.test.ts, Headers.spec.js, Headers.test.js all those files following this pattern will be considered as test file 
 _ _ : these two times underscore is considered as dunder and also called dunder test two underscore on start and two at end .
+
+Example test of contact to understand about syntax 
+test ("Should render contact component", () => {
+    render(<Contact/>);
+    const heading = screen.getByRole("heading"); // 
+    expect(heading).toBeInTheDocument();
+}); 
