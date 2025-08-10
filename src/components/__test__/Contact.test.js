@@ -7,3 +7,15 @@ test ("Should render contact component", () => {
     const heading = screen.getByRole("heading");
     expect(heading).toBeInTheDocument();
 });
+
+test ("Should render button", () => {
+    render(<Contact/>);
+    const button = screen.getByRole("button");
+    expect(button).toBeInTheDocument();
+});
+
+test ("Should render submit", () => {
+    render(<Contact/>);
+    const button = screen.getByText("Say Hello");
+    expect(button).toBeInTheDocument();
+});
