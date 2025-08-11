@@ -993,11 +993,11 @@ what we have done till now : setting up testing
 
 Now parcel will already used babel but now we have added babel.config.js now parcel configration will conflict with this babel configration so we have to change parcel behaviour to accomodate to use babel along with jest 
 
-# Assignment
-https://parceljs.org/languages/javascript/#babel Read this parcel by default has its own babel configration if you wish to use ur own custom configration (jest, eslint) then you can choose to disable babel transpilation in parcel and for this you have to make changes in babel.rc file to disable babel transpilation . 
 
 jest configration npx create-jest
-jsdom (browser-like) : It is library which parses and interacts with assembled HTML just like browser. The benifit is that it isn't a browser.but give feature of browser 
+jsdom (browser-like) : It is library which parses and interacts with assembled HTML just like browser. The benifit is that it isn't a browser.but give feature of browser
+
+Unit Testing 
 
 Test Cases :
 Example 
@@ -1005,6 +1005,7 @@ Created sum file
 export const sum = (a b) => {
   return a+b;
 };
+
 
 sum.test.js file inside  __test__
 import sum function in file 
@@ -1020,9 +1021,21 @@ and also we can create any file with the name .test.js or .spec.ts
 Headers.test.js, Headers.test.ts, Headers.spec.js, Headers.test.js all those files following this pattern will be considered as test file 
 _ _ : these two times underscore is considered as dunder and also called dunder test two underscore on start and two at end .
 
-Example test of contact to understand about syntax 
+Example test of contact to understand about syntax  "test" and "it" in our testCase both are same
 test ("Should render contact component", () => {
     render(<Contact/>);
     const heading = screen.getByRole("heading"); // 
     expect(heading).toBeInTheDocument();
 }); 
+
+testing : Render -> Query something -> Assert;
+
+Describe : When there are many testCases in our app then we group then to manage them easily 
+describe("Contact us page test Cases", () => {
+  // test cases for specific portion to test
+})
+
+
+
+# Assignment
+https://parceljs.org/languages/javascript/#babel Read this parcel by default has its own babel configration if you wish to use ur own custom configration (jest, eslint) then you can choose to disable babel transpilation in parcel and for this you have to make changes in babel.rc file to disable babel transpilation . 
