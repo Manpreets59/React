@@ -12,7 +12,7 @@ export const Header = () => {
 
   //Selector : subscribe to store
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
+  // console.log(cartItems);
 
   return (
     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between px-4 py-3 shadow-md sticky top-0 bg-white z-50">
@@ -44,8 +44,7 @@ export const Header = () => {
           </li>
           <li>
             <Link to="/cart" className="hover:text-orange-500 transition">
-              {" "}
-              🛒-({cartItems.length}){" "}
+              cart-({cartItems.length})
             </Link>
           </li>
           <button

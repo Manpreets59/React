@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1754926912351" clover="3.2.0">
-  <project timestamp="1754926912351" name="All files">
-    <metrics statements="28" coveredstatements="11" conditionals="4" coveredconditionals="0" methods="11" coveredmethods="1" elements="43" coveredelements="12" complexity="0" loc="28" ncloc="28" packages="2" files="7" classes="7"/>
+<coverage generated="1755014815253" clover="3.2.0">
+  <project timestamp="1755014815253" name="All files">
+    <metrics statements="27" coveredstatements="22" conditionals="4" coveredconditionals="2" methods="11" coveredmethods="6" elements="42" coveredelements="30" complexity="0" loc="27" ncloc="27" packages="2" files="7" classes="7"/>
     <package name="components">
-      <metrics statements="10" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="1"/>
+      <metrics statements="9" coveredstatements="9" conditionals="4" coveredconditionals="2" methods="4" coveredmethods="4"/>
       <file name="Contact.js" path="D:\Projects\Namaste React\src\components\Contact.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="3" type="stmt"/>
       </file>
       <file name="Header.js" path="D:\Projects\Namaste React\src\components\Header.js">
-        <metrics statements="8" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="2" methods="3" coveredmethods="3"/>
         <line num="8" count="1" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="54" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="14" count="7" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="53" count="1" type="cond" truecount="1" falsecount="1"/>
       </file>
     </package>
     <package name="utils">
-      <metrics statements="18" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="0"/>
+      <metrics statements="18" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="2"/>
       <file name="appStore.js" path="D:\Projects\Namaste React\src\utils\appStore.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="4" count="1" type="stmt"/>
@@ -42,15 +41,15 @@
         <line num="8" count="1" type="stmt"/>
       </file>
       <file name="useOnlineStatus.js" path="D:\Projects\Namaste React\src\utils\useOnlineStatus.js">
-        <metrics statements="8" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <metrics statements="8" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
         <line num="9" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
       </file>
       <file name="userContext.js" path="D:\Projects\Namaste React\src\utils\userContext.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
