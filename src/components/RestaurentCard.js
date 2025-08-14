@@ -2,6 +2,7 @@ import { CDN_URL } from "../utils/constants";
 
 export const RestaurentCard = (props) => {
   const { resData } = props;
+  console.log(resData);
   const { cloudinaryImageId, name, avgRating, cuisines, costForTwo, sla } =
     resData;
   return (
@@ -26,16 +27,18 @@ export const RestaurentCard = (props) => {
   );
 };
 
-// Higher order component to add a promoted labelif the restaurant is promoted 
-// intput- RestaurantCard => RestaurantCardPromoted 
+// Higher order component to add a promoted labelif the restaurant is promoted
+// intput- RestaurantCard => RestaurantCardPromoted
 
 export const withPromotedLabel = (RestaurentCard) => {
   return (props) => {
     return (
-      <div >
-        <label className="absolute bg-black text-white m-2 p-2 rounded-lg ">Promoted</label>
-        <RestaurentCard {...props}/>
+      <div>
+        <label className="absolute bg-black text-white m-2 p-2 rounded-lg ">
+          Promoted
+        </label>
+        <RestaurentCard {...props} />
       </div>
-    )
-  }
-}
+    );
+  };
+};

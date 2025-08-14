@@ -1089,10 +1089,25 @@ it("Should render header component with logIn buttton and change login to logout
   expect(logoutButton).toBeInTheDocument();
 });
 
+for using toBeInTheDocument() we need to { import "@testing-library/jest-dom"}
 
 here we use fireEvent to actully to change login to logout 
 
+How to do unit testing with props to component :
+for this we need to have mock data and create a seprate folder to keep our mock data
 
+Example code :
+const { render, screen } = require("@testing-library/react")
+import {RestaurentCard} from "../RestaurentCard"
+import MOCK_DATA from "../mocks/resCardMock.json";
+import "@testing-library/jest-dom"
+
+it("should render RestaurantCard component with props data", () => {
+    render(<RestaurentCard resData = {MOCK_DATA}/>)
+    const name = screen.getByText("Cafe Coffee Day")
+    expect(name).toBeInTheDocument();
+})
 
 # Assignment
 https://parceljs.org/languages/javascript/#babel Read this parcel by default has its own babel configration if you wish to use ur own custom configration (jest, eslint) then you can choose to disable babel transpilation in parcel and for this you have to make changes in babel.rc file to disable babel transpilation . 
+test it shoud render restaurant card component with promoted label 
