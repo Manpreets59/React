@@ -22,6 +22,7 @@ export const Body = () => {
     );
 
     const json = await data.json();
+    console.log(json);
     setlistOfRestaurants(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants || []
@@ -48,6 +49,7 @@ export const Body = () => {
         <div className="search flex gap-2">
           <input
             type="text"
+            data-testid = "searchInput"
             placeholder="Search Restaurents"
             className="border border-gray-400 rounded-md px-4 py-2 w-64 focus:outline-none focus:ring-2  focus:ring-blue-500 "
             value={searchText}
@@ -66,7 +68,7 @@ export const Body = () => {
             }}
             className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
           >
-            search
+            Search
           </button>
         </div>
         <button

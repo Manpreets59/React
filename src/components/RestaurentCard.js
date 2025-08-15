@@ -6,7 +6,7 @@ export const RestaurentCard = (props) => {
   const { cloudinaryImageId, name, avgRating, cuisines, costForTwo, sla } =
     resData;
   return (
-    <div className="w-72 p-4 m-4 rounded-2xl shadow-lg hover:scale-105 transition-transform bg-white">
+    <div data-testid = "resCard" className="w-72 p-4 m-4 rounded-2xl shadow-lg hover:scale-105 transition-transform bg-white">
       <img
         className="w-full h-44 object-cover rounded-lg"
         alt="Restaurant"

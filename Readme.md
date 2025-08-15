@@ -997,7 +997,7 @@ Now parcel will already used babel but now we have added babel.config.js now par
 jest configration npx create-jest
 jsdom (browser-like) : It is library which parses and interacts with assembled HTML just like browser. The benifit is that it isn't a browser.but give feature of browser
 
-Unit Testing 
+# Unit Testing 
 
 Test Cases :
 Example 
@@ -1107,6 +1107,99 @@ it("should render RestaurantCard component with props data", () => {
     const name = screen.getByText("Cafe Coffee Day")
     expect(name).toBeInTheDocument();
 })
+
+# Integration Testing
+Testing the feature of search button for specific text 
+fetch : it is power of browser it is not a  native function inside javascript it is given by browser when we run this on jsdom which is browser like but not a broser and doesn't have functionality of fetch we encounter create error so we have to fake this we have to write mock function for this 
+this is an example of mock fetch function similar to one given by browser 
+why this ? 
+we cannot make actual network call because this test cases are not running on browser, it cannot make api call because it is running on jsdom a browser like environment 
+
+global.fetch = jest.fn(() => {
+  return Promise.resolve({
+    json: () => {
+      Promise.resolve(data);
+    },
+  });
+});
+
+ "watch-test": "jest --watchAll"  : continuously watch test and keep running it, if i make change and save it automatically run the test again 
+
+ whenever you are doing state update wrap your render function inside act 
+ exaple :
+ it("Should render the body component with search", async () => {
+  await act(async () => 
+    render(
+      <BrowserRouter>
+        <Body />
+      </BrowserRouter>
+    )
+  );
+
+
+  example code :
+  import { fireEvent, render, screen } from "@testing-library/react";
+import { act } from "react-dom/test-utils";
+import { Body } from "../Body";
+import MOCK_DATA from "../mocks/mockResListData.json";
+import { BrowserRouter } from "react-router-dom";
+import "@testing-library/jest-dom";
+
+global.fetch = jest.fn(() => {
+  return Promise.resolve({
+    json: () => {
+      return Promise.resolve(MOCK_DATA);
+    },
+  });
+});
+
+it("Should render the body component with search and search reslist for pizza input text", async () => {
+  await act(async () => 
+    render(
+      <BrowserRouter>
+        <Body />
+      </BrowserRouter>
+    )
+  );
+
+  const cardsBeforeSearch = screen.getAllByTestId("resCard");
+  expect(cardsBeforeSearch.length).toBe(20);
+
+  const searchBtn = screen.getByRole("button", { name: "Search" });
+  const searchInput = screen.getByTestId("searchInput")
+  fireEvent.change(searchInput, {target: {value: "pizza"}})
+  fireEvent.click(searchBtn);
+  expect(searchBtn).toBeInTheDocument();
+  const cardsAfterSearch = screen.getAllByTestId("resCard");
+  expect(cardsAfterSearch.length).toBe(1);
+});
+
+
+// top rated restaurent : card beforefilter 
+                          topratedBtn = screen.getByRole("button", {name: "TopRanted Restaurant})
+                          fireevetn.click(topratedBtn)
+                          cardAfter filter = screnn.getByTextId("resCard)
+                          expect (cardAfterFileter.length).toBe(11)
+
+we can search like this const searchInput = screen.getByTestId("searchInput") after giving id like this data-testid = "searchInput"
+
+we have function like beforeAll and beforeEach , afterAll, afterEach usefull for cleanup etc;
+example code :
+ beforeAll(() => {
+    console.log("before all test cases");
+  })
+  beforeEach(() => {
+    console.log("before each test case");
+  })
+
+   afterAll(() => {
+    console.log("after all test cases");
+  })
+  afterEach(() => {
+    console.log("after each test case");
+  })
+
+// Add to cart-testCases
 
 # Assignment
 https://parceljs.org/languages/javascript/#babel Read this parcel by default has its own babel configration if you wish to use ur own custom configration (jest, eslint) then you can choose to disable babel transpilation in parcel and for this you have to make changes in babel.rc file to disable babel transpilation . 
